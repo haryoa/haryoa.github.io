@@ -21,12 +21,14 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Haryo Blog                          # the main title
+title: Haryoaw Deep Blog                          # the main title
 
-tagline: No tagline needed   # it will display as the sub-title
+tagline: Uhmm. What should I write here? Need anti-mainstream tagline 😭!   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  This is awesome
+  Haryoaw Deep Blog that contains random tech (in AI, NLP, ML), personal development, and random stuffs.
+  Anyone that is interested in those area should visit my blog. Author : Haryo Akbarianto Wibowo
+  
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://haryoa.github.io'
@@ -89,7 +91,7 @@ avatar: assets/img/posts/istockphoto-1193846087-612x612.jpg
 toc: true
 
 comments:
-  active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: 'giscus'    # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
@@ -99,10 +101,10 @@ comments:
     issue_term:   # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo:             # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
+    repo: haryoa/haryoa.github.io            # <gh-username>/<repo>
+    repo_id: R_kgDOHLUQgg
+    category: Announcements
+    category_id: DIC_kwDOHLUQgs4COxDd
     mapping:          # optional, default to 'pathname'
     input_position:   # optional, default to 'bottom'
     lang:             # optional, default to the value of `site.lang`
