@@ -21,12 +21,14 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Haryo Blog                          # the main title
+title: Haryoaw Deep Blog                          # the main title
 
-tagline: No tagline needed   # it will display as the sub-title
+tagline: Uhmm. What should I write here? Need anti-mainstream tagline 😭!   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  This is awesome
+  Haryoaw Deep Blog that contains random tech (in AI, NLP, ML), personal development, and random stuffs.
+  Anyone that is interested in those area should visit my blog. Author : Haryo Akbarianto Wibowo
+  
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://haryoa.github.io'
