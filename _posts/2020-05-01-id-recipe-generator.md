@@ -213,5 +213,4 @@ month={May}}
 [^GPT]: GPT-2 Paper: [Link](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf)
 [^hf-tutor]: Several tutorials from huggingface: [Link](https://huggingface.co/transformers/v3.0.2/notebooks.html)
 [^pl-lit]: [Pytorch Lightning Site](https://www.pytorchlightning.ai/)
-
-
+[^indot5]: [Indonesian T5](https://huggingface.co/Wikidepia/IndoT5-base)
