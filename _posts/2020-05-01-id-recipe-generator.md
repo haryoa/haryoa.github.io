@@ -30,8 +30,8 @@ I will provide the best model and also the code to train it.
 
 Feel free to try and download it :) .
 
-- 🤗 Huggingface Space: [Space](https://huggingface.co/spaces/haryoaw/id-recigen)
-- 🤗 Huggingface Model: [Model](https://huggingface.co/haryoaw/id-recigen-bart)
+- 🤗 Huggingface Space (demo): [Space](https://huggingface.co/spaces/haryoaw/id-recigen)
+- 🤗 Huggingface Model (download the model): [Model](https://huggingface.co/haryoaw/id-recigen-bart)
 - ✨ Repository (to train the model): [GitHub repository](https://github.com/haryoa/idrecibrew2)
 
 ## Introduction
