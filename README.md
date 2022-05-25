@@ -1,3 +1,9 @@
 # Chirpy Starter
 
-TESTTTT!!
+My blog~
+
+## Run jekyll
+
+```
+bundle exec jekyll s
+```
