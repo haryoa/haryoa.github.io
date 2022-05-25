@@ -1,12 +1,12 @@
 ---
 image:
-  src: https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80
+  src: https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80
   width: 1000   # in pixels
   height: 400   # in pixels
   alt: IR systems
 author: haryoaw
 title: Examples of Information Retrieval Application on Image and Text  
-date: 2022-05-01 12:00:00 +0700
+date: 2022-05-19 15:00:00 +0700
 categories: [Technical, Information Retrieval]
 tags: [tech, machine learning, deep learning, information retrieval, image, nlp]
 pin: false
@@ -267,7 +267,7 @@ Above pictures and explanations are taken from this blog[^blog-faiss]. Feel free
 
 ## Conclusion
 
-![bart-model](https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1143&q=80){: width="800" height="200" }
+![cat](https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1143&q=80){: width="800" height="200" }
 _Random cat~. Photo by <a href="https://unsplash.com/@madhatterzone?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Manja Vitolic</a> on <a href="https://unsplash.com/s/photos/cat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   ._
 
