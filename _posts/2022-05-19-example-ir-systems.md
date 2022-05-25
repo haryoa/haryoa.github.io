@@ -166,7 +166,7 @@ You can code to generate data synthesis, use a data synthesis library, or utiliz
 
 We need a model that can generalize entity extraction based on the data provided. Current popular approach in Machine Learning is using a Deep Learning model. In NLP, a pre-trained model like BERT or ROBERTA is popular to be used. What we need to do is train the pre-trained model again to the data (we call it `fine-tune`)..
 
-For Indonesian data, you can use IndoBERT [^indobert] or IndoNLU[^IndoNLU] model and train them to your data. It will produce a great quality model. You can search them on [Huggingface](www.huggingface.co) and fine-tune the model to your data.
+For Indonesian data, you can use IndoBERT [^indobert] or IndoNLU[^IndoNLU] model and train them to your data. It will produce a great quality model. You can search them on [Huggingface](https://www.huggingface.co) and fine-tune the model to your data.
 
 ### Information Retrieval: elasticsearch
 
