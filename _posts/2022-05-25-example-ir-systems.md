@@ -6,7 +6,7 @@ image:
   alt: IR systems
 author: haryoaw
 title: Examples of Information Retrieval Application on Image and Text  
-date: 2022-05-19 15:00:00 +0700
+date: 2022-05-25 15:00:00 +0700
 categories: [Technical, Information Retrieval]
 tags: [tech, machine learning, deep learning, information retrieval, image, nlp]
 pin: false
