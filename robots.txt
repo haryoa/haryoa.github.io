@@ -1,5 +1,4 @@
-User-agent: *
-
-Disallow: /norobots/
-
 Sitemap: https://haryoa.github.io/sitemap.xml
+
+User-agent: *
+Disallow:
