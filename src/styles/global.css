@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-sage: #2C3E50;      /* Changed from #4a5d4f */
+  --color-cream: #F5F7FA;     /* Changed from #f5f1e8 */
+  --color-copper: #16A085;    /* Changed from #b87e5f */
+  --color-charcoal: #2D3436;  /* Changed from #2c2c2c */
+  --color-soft-gray: #BDC3C7; /* New color */
+  --color-highlight: #3498DB; /* New color */
+  --color-violet: #8E44AD;    /* New color */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  @apply bg-cream text-charcoal;
+}

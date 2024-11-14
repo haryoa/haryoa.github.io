@@ -1,0 +1,28 @@
+---
+const { activities } = Astro.props;
+---
+
+<section id="Professional Activities" class="space-y-6">
+  <h2 class="text-3xl font-light tracking-wide text-[#4A5D4F] relative inline-block group">
+    Professional Activities
+    <div class="absolute -bottom-2 left-0 w-0 h-px bg-[#B87E5F] group-hover:w-full transition-all duration-500" />
+  </h2>
+  <div class="space-y-6">
+    {
+      activities.map((activity) => (
+        <div class="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-[#2C3E50]/10 transition-all duration-500 hover:shadow-md hover:border-[#16A085]/30">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-medium text-[#2C3E50] mb-2">{activity.data.role}</h3>
+              <p class="text-[#2C2C2C] mb-2">{activity.data.organization}</p>
+              {activity.data.description && (
+                <p class="text-sm text-[#2C2C2C]/80">{activity.data.description}</p>
+              )}
+            </div>
+            <span class="text-sm font-medium text-[#16A085]">{activity.data.year}</span>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

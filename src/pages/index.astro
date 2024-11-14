@@ -1,0 +1,329 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import AboutSection from "../components/sections/AboutSection.astro";
+import EducationSection from "../components/sections/EducationSection.astro";
+import PublicationsSection from "../components/sections/PublicationsSection.astro";
+import ExperienceSection from "../components/sections/ExperienceSection.astro";
+import TalksSection from "../components/sections/TalksSection.astro";
+import "react-loading-skeleton/dist/skeleton.css";
+import { FiMail, FiGithub, FiLinkedin, FiTwitter, FiX } from "react-icons/fi";
+import { SiGooglescholar } from "react-icons/si";
+import { FaBlog } from "react-icons/fa";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/shift-away.css";
+import ProfessionalActivitiesSection from "../components/sections/ProfessionalActivitiesSection.astro";
+import BaseHead from "../components/BaseHead.astro";
+import "../styles/main.css";
+
+// Data fetching
+const profile = {
+  name: "Haryo Akbarianto Wibowo",
+  tagline: "PhD Student @ MBZUAI", // Add tagline
+  image: "/images/profile.png",
+  email: "haryo.akbarianto@gmail.com",
+  location: "Abu Dhabi",
+  social: {
+    twitter: "https://twitter.com/haryoaw",
+    github: "https://github.com/haryoa",
+    linkedin: "https://www.linkedin.com/in/haryoaw/",
+    scholar: "https://scholar.google.com/citations?user=X5tK6xsAAAAJ&hl=en",
+  },
+  researchInterests: [
+    {
+      title: "Learning Efficiency",
+      icon: "🤖",
+      description:
+        "Objective Functions, Curriculum Learning, Knowledge Distillation, Model Compression",
+    },
+    {
+      title: "Explainability",
+      icon: "👁️",
+      description: "Interpretability in Efficiency, Model Understanding",
+    },
+    {
+      title: "Data",
+      icon: "📝",
+      description: "Data Building and Selection For Training and Evaluation",
+    },
+  ],
+};
+
+const sections = [
+  "About Me",
+  "Education",
+  // "Featured Publications",
+  "Publications",
+  "Experience",
+  "Professional Activities",
+  "Talks",
+];
+const publications = await getCollection("publications");
+const education = await getCollection("education");
+const talks = await getCollection("talks");
+const experiences = await getCollection("experiences");
+const activities = await getCollection("professionalActivities");
+
+
+const sectionComponents = [
+  { id: "About Me", component: AboutSection, props: { profile } },
+  { id: "Education", component: EducationSection, props: { education } },
+  {
+    id: "Publications",
+    component: PublicationsSection,
+    props: { publications },
+  },
+  { id: "Experience", component: ExperienceSection, props: { experiences } },
+  {
+    id: "Professional Activities",
+    component: ProfessionalActivitiesSection,
+    props: { activities },
+  },
+  { id: "Talks", component: TalksSection, props: { talks } },
+];
+
+// const colors = {
+//   primary: "#0F766E", // Teal
+//   secondary: "#134E4A", // Dark Teal
+//   accent: "#2DD4BF", // Light Teal
+//   background: "#F0FDF4", // Mint White
+//   text: "#1E293B", // Slate
+//   muted: "#64748B", // Muted Slate
+// };
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <BaseHead />
+    <script src="../scripts/main.ts"></script>
+
+  </head>
+  <body>
+    <div class="min-h-screen bg-white">
+      <div class="fixed top-0 left-0 w-full h-0.5 bg-[#4A5D4F]/10 z-50">
+        <div
+          class="progress-bar h-full bg-[#B87E5F] transition-all duration-200"
+          style="width: 0%"
+        >
+        </div>
+      </div>
+
+      <nav
+        id="main-navbar"
+        class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-sm z-40 transition-transform duration-300 transform translate-y-0 border-b border-[#4A5D4F]/5"
+      >
+        <Navbar />
+      </nav>
+
+      <div class="pt-16 flex min-h-screen justify-center">
+        <!-- Added justify-center -->
+        <div class="max-w-screen-xl w-full relative flex flex-col lg:flex-row">
+          <!-- Added container -->
+          <div
+            id="profile-sidebar"
+            class="lg:fixed lg:w-72 w-full lg:h-[calc(100vh-4rem)] p-4 lg:p-8 bg-gradient-to-b from-white via-white to-[#F5F1E8]/20 transition-all duration-300
+            before:absolute before:inset-y-8 before:right-0 before:w-[1px] before:bg-gradient-to-b before:from-transparent before:via-[#4A5D4F]/10 before:to-transparent"
+          >
+            <div class="flex flex-col items-center space-y-6">
+              <div class="relative group">
+                <div
+                  class="w-48 h-48 bg-[#4A5D4F]/5 rounded-full flex items-center justify-center text-[#4A5D4F]/30 overflow-hidden transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                >
+                  <Image
+                    src={profile.image}
+                    alt={`Photo of ${profile.name}`}
+                    width={250}
+                    height={250}
+                    class="rounded-full"
+                  />
+                </div>
+                <div
+                  class="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[#4A5D4F]/20 to-[#B87E5F]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                </div>
+              </div>
+
+              <div class="relative text-center">
+                <!-- Changed: added text-center -->
+                <div class="text-2xl font-light tracking-wide text-[#4A5D4F]">
+                  {profile.name}
+                </div>
+                <div class="text-sm text-[#4A5D4F]/70 mt-1">
+                  <!-- Added: tagline -->
+                  {profile.tagline}
+                </div>
+                <div
+                  class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-px bg-[#B87E5F]/30"
+                >
+                </div>
+              </div>
+
+              <div class="w-full space-y-6 text-[#2C2C2C]">
+                <div class="text-center">
+                  <div class="flex justify-center gap-4">
+                    <a
+                      href={`mailto:${profile.email}`}
+                      class="text-[#2C3E50] hover:text-[#16A085] transition-colors duration-200 hover:scale-110 transform"
+                      aria-label="Email"
+                    >
+                      <FiMail size="1.5em" />
+                    </a>
+                    <a
+                      href={profile.social.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-[#2C3E50] hover:text-[#16A085] transition-colors duration-200 hover:scale-110 transform"
+                      aria-label="GitHub"
+                    >
+                      <FiGithub size="1.5em" />
+                    </a>
+                    <a
+                      href={profile.social.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-[#2C3E50] hover:text-[#16A085] transition-colors duration-200 hover:scale-110 transform"
+                      aria-label="Twitter"
+                    >
+                      <FiTwitter size="1.5em" />
+                    </a>
+                    <a
+                      href={profile.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-[#2C3E50] hover:text-[#16A085] transition-colors duration-200 hover:scale-110 transform"
+                      aria-label="LinkedIn"
+                    >
+                      <FiLinkedin size="1.5em" />
+                    </a>
+                    <a
+                      href={profile.social.scholar}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-[#2C3E50] hover:text-[#16A085] transition-colors duration-200 hover:scale-110 transform"
+                      aria-label="Google Scholar"
+                    >
+                      <SiGooglescholar size="1.5em" />
+                    </a>
+                  </div>
+
+                  <!--  new coming soon blog button -->
+                    <!-- <div class="mt-4">
+                      <button
+                        disabled
+                        class="group relative px-6 py-2 rounded-full bg-gradient-to-r from-[#B87E5F]/80 to-[#4A5D4F]/80 text-white text-sm font-medium cursor-not-allowed hover:shadow-lg transition-all duration-300"
+                      >
+                        <span
+                          class="absolute inset-0 rounded-full bg-gradient-to-r from-[#B87E5F] to-[#4A5D4F] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        ></span>
+                        <span
+                          class="relative flex items-center justify-center gap-2"
+                        >
+                          <FaBlog />
+                          Blog
+                          <span class="inline-flex animate-pulse">✨</span>
+                          <span class="text-xs opacity-75">Coming Soon</span>
+                        </span>
+                      </button>
+                    </div> -->
+                </div>
+
+                <div class="space-y-2 group">
+                  <div class="text-center mb-6">
+                    <span
+                      class="inline-block px-4 py-1 text-xs text-[#4A5D4F]/70 bg-[#F5F1E8]/50 rounded-full"
+                    >
+                      Research Interests
+                    </span>
+                  </div>
+                  <div class="flex flex-col gap-3">
+                    {
+                      profile.researchInterests.map((interest) => (
+                        <div class="group cursor-pointer">
+                          <div class="flex items-center gap-2 p-2 rounded-lg transition-all duration-300 hover:bg-[#F5F1E8]/50">
+                            <span class="text-xl transform group-hover:scale-110 transition-transform duration-300">
+                              {interest.icon}
+                            </span>
+                            <div class="text-left">
+                              <div class="text-sm font-medium text-[#4A5D4F]">
+                                {interest.title}
+                              </div>
+                              <div class="text-xs text-[#4A5D4F]/70 max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-300">
+                                {interest.description}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="lg:ml-72 flex-1 p-4 lg:p-8 bg-gradient-to-br from-white via-[#F5F1E8]/30 to-white max-w-[850px] w-full"
+          >
+            <nav
+              id="section-nav"
+              class="mb-6 lg:mb-12 pb-4 bg-white/80 backdrop-blur-md sticky top-16 pt-4 z-30 transition-all duration-300
+              before:absolute before:inset-x-0 before:bottom-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-[#4A5D4F]/10 before:to-transparent"
+            >
+              <ul class="flex space-x-4 lg:space-x-8 text-xs lg:text-sm overflow-x-auto">
+                {
+                  sections.map((section) => (
+                    <li
+                      key={section}
+                      data-section={section}
+                      data-nav-link={section}
+                      class="relative cursor-pointer whitespace-nowrap group text-[#4A5D4F] transition-colors duration-300 hover:text-[#B87E5F] section-nav-item"
+                    >
+                      {section}
+                      <div class="absolute -bottom-5 left-0 w-full h-[2px] bg-gradient-to-r from-[#B87E5F]/80 to-[#B87E5F]/40 opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left" />
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+
+            <div class="space-y-12 lg:space-y-24">
+              {
+                sectionComponents.map(({ id, component: Component, props }) => (
+                  <div 
+                    id={id.replace(/\s+/g, '')} 
+                    class="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border border-[#4A5D4F]/5 p-8 hover:shadow-md transition-all duration-300 section-transition stagger-children"
+                  >
+                    <Component {...props} />
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+
+    <button
+      id="back-to-top"
+      class="fixed bottom-8 right-8 bg-[#B87E5F] text-white p-4 rounded-full shadow-lg transform transition-all duration-300 hover:bg-[#4A5D4F] focus:outline-none z-[100] translate-y-12 opacity-0 hover:scale-110 active:scale-95 cursor-pointer"
+      aria-label="Back to top"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+      </svg>
+    </button>
+  </body>
+</html>

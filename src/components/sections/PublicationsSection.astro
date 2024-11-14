@@ -1,0 +1,261 @@
+---
+import { motion } from "framer-motion";
+import Tippy from "@tippyjs/react";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  publications: any[];
+}
+
+const { publications } = Astro.props;
+const myName = "Haryo Akbarianto Wibowo"; // Replace with your actual name
+
+// Sort publications to show featured ones first
+const sortedPublications = [...publications].sort((a, b) => {
+  if (a.data.featured && !b.data.featured) return -1;
+  if (!a.data.featured && b.data.featured) return 1;
+  return 0;
+});
+
+// Helper function to format authors list with HTML
+const formatAuthors = (authors: string[]) => {
+  return authors
+    .map((author) =>
+      author === myName ? `<strong>${author}</strong>` : author
+    )
+    .join(", ");
+};
+---
+
+<>
+  <!-- <section id="Featured Publications" class="space-y-6">
+    <h2
+      class="text-3xl font-light tracking-wide text-[#2C3E50] relative inline-block group"
+    >
+      Featured Publications
+      <div
+        class="absolute -bottom-2 left-0 w-0 h-px bg-[#16A085] group-hover:w-full transition-all duration-500"
+      >
+      </div>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        featuredPublications.map((pub) => (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            class="bg-gradient-to-br from-white to-teal-50/30 rounded-lg p-6 shadow-sm border border-teal-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300"
+          >
+            <Tippy
+              content={pub.data.abstract}
+              placement="top"
+              animation="shift-away"
+              arrow={false}
+              className="max-w-md bg-teal-800 text-white p-4 rounded-lg"
+            >
+              <h3 class="text-xl font-medium text-teal-900 mb-2 cursor-help">
+                {pub.data.title}
+              </h3>
+            </Tippy>
+            <p class="text-sm text-[#2C2C2C] mb-2">
+              <span set:html={formatAuthors(pub.data.authors)} />
+            </p>
+            <p class="text-sm text-[#2C2C2C]/80 mb-4">
+              {pub.data.venue} • {pub.data.year}
+            </p>
+            {pub.data.links && (
+              <div class="flex gap-3">
+                {pub.data.links.map((link) => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-1 px-3 py-1 text-sm rounded-md bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                  >
+                    <Icon
+                      name={
+                        link.text.toLowerCase() === "arxiv"
+                          ? "mdi:file-document"
+                          : link.text.toLowerCase() === "paper"
+                            ? "mdi:file-pdf-box"
+                            : link.text.toLowerCase() === "dataset"
+                              ? "mdi:database"
+                              : link.text.toLowerCase() === "code"
+                                ? "mdi:github"
+                                : "mdi:link"
+                      }
+                      class="w-4 h-4"
+                    />
+                    {link.text}
+                  </a>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        ))
+      }
+    </div>
+  </section> -->
+
+  <section id="Publications" class="relative">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-white via-[#F5F1E8]/20 to-white rounded-lg"
+    >
+    </div>
+
+    <div class="relative z-10">
+      <h2 class="text-3xl font-light tracking-wide text-[#2C3E50] group mb-8">
+        Publications
+        <div
+          class="h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-[#16A085] to-[#B87E5F] transition-all duration-500"
+        >
+        </div>
+      </h2>
+
+      <div
+        class="flex gap-4 mb-8 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-[#16A085]/20 scrollbar-track-transparent"
+      >
+        <button
+          data-filter-btn="all"
+          onclick="setPubFilter('all')"
+          class="px-4 py-2 rounded-lg transition-all duration-300 bg-[#2C3E50] text-white hover:shadow-lg hover:scale-105 active:scale-95"
+        >
+          All
+        </button>
+        {
+          ["conference", "preprint"].map((type) => (
+            <button
+              data-filter-btn={type}
+              onclick={`setPubFilter('${type}')`}
+              class="px-4 py-2 rounded-lg transition-all duration-300 bg-white/50 text-[#2C3E50] hover:bg-[#2C3E50]/10 hover:shadow-md hover:scale-105 active:scale-95"
+            >
+              {type.charAt(0).toUpperCase() + type.slice(1)}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="grid gap-6">
+        {
+          sortedPublications.map((pub) => (
+            <div
+              key={pub.id}
+              data-pub
+              data-type={pub.data.type}
+              class:list={[
+                "rounded-lg p-6 shadow-sm border transition-all duration-500 hover:shadow-md relative",
+                pub.data.featured
+                  ? "bg-gradient-to-r from-[#16A085]/5 via-white to-[#16A085]/10 border-[#16A085]/30 hover:border-[#16A085]/50 hover:shadow-[#16A085]/10 hover:shadow-lg"
+                  : "bg-white/80 backdrop-blur-sm border-[#2C3E50]/10 hover:border-[#16A085]/30"
+              ]}
+            >
+              {pub.data.featured && (
+                <div class="absolute -top-3 right-4 px-3 py-1 bg-gradient-to-r from-[#16A085] to-[#138D75] text-white text-sm rounded-full shadow-md shadow-[#16A085]/20 animate-shine">
+                  ✨ Featured
+                </div>
+              )}
+              <h3 class="text-xl font-medium text-[#2C3E50] mb-2">
+                {/* Set paper url if exsts*/}
+                <a
+                  href={[pub.data.links[0]?.url, "#"].find((x) => x)}
+                  class="hover:text-[#16A085] transition-colors duration-200"
+                >
+                  {pub.data.title}
+                </a>
+              </h3>
+              <p class="text-sm text-[#2C2C2C] mb-2">
+                <span set:html={formatAuthors(pub.data.authors)} />
+              </p>
+              <p class="text-sm text-[#2C2C2C]/80 mb-4">
+                {pub.data.venue}-{pub.data.year}
+              </p>
+              {pub.data.links && (
+                <div class="flex gap-3">
+                  {pub.data.links.map((link) => (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex items-center gap-1 px-3 py-1 text-sm rounded-md bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                    >
+                      <Icon
+                        name={
+                          link.text.toLowerCase() === "arxiv"
+                            ? "mdi:file-document"
+                            : link.text.toLowerCase() === "paper"
+                              ? "mdi:file-pdf-box"
+                              : link.text.toLowerCase() === "dataset"
+                                ? "mdi:database"
+                                : link.text.toLowerCase() === "code"
+                                  ? "mdi:github"
+                                  : "mdi:link"
+                        }
+                        class="w-4 h-4"
+                      />
+                      {link.text}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Add smooth scrollbar styling */
+    .scrollbar-thin::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+      background: rgba(22, 160, 133, 0.2);
+      border-radius: 3px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+      background: rgba(22, 160, 133, 0.4);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+
+    .animate-shine {
+      background: linear-gradient(
+        120deg,
+        #16A085 0%,
+        #138D75 25%,
+        #0E6655 50%,
+        #138D75 75%,
+        #16A085 100%
+      );
+      background-size: 200% auto;
+      animation: shine 4s linear infinite;
+    }
+  </style>
+</>

@@ -1,0 +1,87 @@
+---
+import { getEntry } from "astro:content";
+
+interface Props {
+  profile: {
+    about: string;
+  };
+}
+
+const { profile } = Astro.props;
+const aboutEntry = await getEntry("about", "about");
+const { Content } = await aboutEntry.render();
+---
+
+<section id="About Me" class="relative overflow-hidden">
+  <div class="relative z-10 max-w-3xl mx-auto px-4">
+    <h2
+      class="text-4xl font-light tracking-wide text-[#2C3E50] relative inline-block group mb-6"
+    >
+      About Me
+      <div
+        class="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-[#16A085] to-[#B87E5F] group-hover:w-full transition-all duration-500 ease-in-out"
+      >
+      </div>
+    </h2>
+
+    <div class="prose prose-slate prose-lg prose-a:text-[#3498db] prose-a:no-underline hover:prose-a:underline prose-a:transition-colors max-w-none relative">
+      <div
+        class="absolute top-0 -left-4 w-1 h-full bg-gradient-to-b from-[#16A085]/20 via-[#16A085]/10 to-transparent"
+      >
+      </div>
+      <div class="animate-fadeIn text-base">
+        <Content />
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div
+    class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#16A085]/5 to-transparent rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-[#B87E5F]/5 to-transparent rounded-full blur-2xl"
+  >
+  </div>
+</section>
+
+<style>
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .prose p {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .prose p:hover {
+    transform: translateX(4px);
+  }
+
+  .prose a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .prose a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+</style>

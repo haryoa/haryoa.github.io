@@ -1,0 +1,86 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: URL;
+  type?: string;
+}
+
+const {
+  title = "Haryo Akbarianto Wibowo | NLP Research PhD Student at MBZUAI",
+  description = "Haryo Akbarianto Wibowo is a PhD student at MBZUAI researching learning efficiency, explainability, and data (selection or building) in Natural Language Processing. Currently seeking internship opportunities in ML/NLP research.",
+  image = "/images/social-card.png",
+  canonicalURL = new URL(
+    Astro.url.pathname,
+    Astro.site || "http://localhost:4321"
+  ),
+  type = "website",
+} = Astro.props;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/png" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Other important meta tags -->
+<meta name="author" content="Haryo Akbarianto Wibowo" />
+<meta
+  name="keywords"
+  content="NLP, Machine Learning, AI Research, PhD Student, MBZUAI, Natural Language Processing, Data, Learning Efficiency, Explainability, Interpretability, Indonesia, UAE"
+/>
+
+<!-- Robots and other crawlers -->
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+<!-- Additional meta tags for academic context -->
+<meta name="citation_author" content="Haryo Akbarianto Wibowo" />
+<meta
+  name="academic_field"
+  content="Learning Efficiency, PhD Students, 
+  Explainabiltiy, Interpretability, Data, Text Style Transfer, MBZUAI, Indonesia, UAE, Data, Efficiency"
+/>
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, canonicalURL)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, canonicalURL)} />
+
+<!-- Font preloads -->
+<link
+  rel="preload"
+  href="/fonts/inter-var.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin="anonymous"
+/>
+
+<style is:inline>
+  @font-face {
+    font-family: 'Inter var';
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+    font-named-instance: 'Regular';
+    src: url('/fonts/inter-var.woff2') format('woff2');
+  }
+</style>
+

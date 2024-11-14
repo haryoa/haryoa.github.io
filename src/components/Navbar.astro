@@ -1,0 +1,32 @@
+---
+import { AnimatedLogo, AnimatedButton, BackButton } from "./NavbarMotion";
+
+import { motion } from "framer-motion";
+
+interface Props {
+  showBackButton?: boolean;
+}
+
+const { showBackButton = false } = Astro.props;
+---
+
+<nav
+  class="w-full bg-gradient-to-r from-white/80 via-white/90 to-white/80 backdrop-blur-sm transition-all duration-300 hover:bg-white/95
+  before:absolute before:inset-x-0 before:bottom-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-[#2C3E50]/10 before:to-transparent"
+>
+  <div class="max-w-screen-2xl mx-auto px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="w-1/3 flex items-center gap-8">
+        {showBackButton && <BackButton client:load />}
+      </div>
+
+      <div class="w-1/3 flex justify-center">
+        <AnimatedLogo client:load />
+      </div>
+
+      <div class="w-1/3 flex justify-end space-x-8">
+        <AnimatedButton client:load />
+      </div>
+    </div>
+  </div>
+</nav>

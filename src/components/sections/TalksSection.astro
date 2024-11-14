@@ -1,0 +1,26 @@
+---
+import { motion } from "framer-motion";
+import { useFrontmatter } from 'astro';
+import TalkCard from '../TalkCard';
+
+const { talks } = Astro.props;
+---
+
+<section id="Talks" class="space-y-6">
+  <h2
+    class="text-3xl font-light tracking-wide text-[#2C3E50] relative inline-block group"
+  >
+    Talks
+    <div
+      class="absolute -bottom-2 left-0 w-0 h-px bg-[#16A085] group-hover:w-full transition-all duration-500"
+    >
+    </div>
+  </h2>
+  <div class="grid gap-6 sm:grid-cols-2">
+    {
+      talks.map((talk, index) => (
+        <TalkCard client:visible talk={talk} index={index} />
+      ))
+    }
+  </div>
+</section>

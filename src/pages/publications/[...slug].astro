@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import Navbar from "../../components/Navbar.astro";
+
+export async function getStaticPaths() {
+  const publications = await getCollection("publications");
+  return publications.map((pub) => ({
+    params: { slug: pub.slug },
+    props: { publication: pub },
+  }));
+}
+
+const { publication } = Astro.props;
+const { Content } = await publication.render();
+---
+
+<html lang="en">
+  <head>
+    <title>{publication.data.title}</title>
+  </head>
+  <body>
+    <div class="min-h-screen bg-[#F5F7FA]">
+      <Navbar showBackButton={true} />
+
+      <div class="pt-24 pb-16 px-8 max-w-4xl mx-auto">
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-lg p-8 shadow-sm border border-[#2C3E50]/10"
+        >
+          <h1 class="text-3xl font-medium text-[#2C3E50] mb-4">
+            {publication.data.title}
+          </h1>
+
+          <div class="mb-6 space-y-2">
+            <p class="text-[#2C2C2C]">{publication.data.authors.join(", ")}</p>
+            <p class="text-[#2C2C2C]/80">
+              {publication.data.venue} • {publication.data.year}
+            </p>
+
+            {
+              publication.data.links && (
+                <div class="flex gap-4">
+                  {publication.data.links.map((link) => (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-[#2C3E50] hover:text-[#16A085] transition-colors duration-200"
+                    >
+                      {link.text}
+                    </a>
+                  ))}
+                </div>
+              )
+            }
+          </div>
+
+          <div class="prose prose-slate max-w-none">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
