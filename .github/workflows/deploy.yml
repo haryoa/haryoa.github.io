@@ -16,29 +16,26 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      
+
       - name: Setup PNPM
         uses: pnpm/action-setup@v2
         with:
           version: latest
-      
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'pnpm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - name: Install dependencies
-        run: pnpm install
-      
-      - name: Install Astro
-        run: pnpm add -D @astrojs/tailwind tailwindcss @astrojs/react
-      
+        run: npm ci
+
       - name: Build and upload site
         uses: withastro/action@v3
         with:
           path: .
-          package-manager: pnpm@latest
+          package-manager: npm@latest
 
   deploy:
     needs: build
