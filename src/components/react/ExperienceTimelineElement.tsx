@@ -30,7 +30,7 @@ export default function ExperienceTimelineElement({ experiences }) {
             <h4 className="text-teal-800 mb-2">{exp.data.company}</h4>
             <p className="text-sm text-slate-600 mb-2">{exp.data.location}</p>
             {exp.data.responsibilities && (
-              <ul className="mt-4 space-y-2"></ul>
+              <ul className="mt-4 space-y-2">
                 {exp.data.responsibilities.map((responsibility, index) => (
                   <li key={index} className="text-sm text-slate-700 flex items-start">
                     <span className="text-teal-600 mr-2">•</span>

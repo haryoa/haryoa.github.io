@@ -17,11 +17,6 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -29,13 +24,17 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm install
+          npm install @astrojs/tailwind
+          npm ci
 
       - name: Build and upload site
         uses: withastro/action@v3
         with:
           path: .
           package-manager: npm@latest
+          node-version: 20
 
   deploy:
     needs: build

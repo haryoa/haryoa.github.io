@@ -5,11 +5,10 @@ import icon from "astro-icon";
 
 export default defineConfig({
   site: "https://haryoa.github.io",
-  base: "/",
   integrations: [
     react({
       include: ['**/react/*'],
-      experimentalReactChildren: true
+      experimentalReactChildren: true,
     }),
     tailwind(),
     icon(),
