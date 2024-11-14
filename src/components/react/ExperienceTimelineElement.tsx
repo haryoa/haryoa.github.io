@@ -7,7 +7,7 @@ import 'react-vertical-timeline-component/style.min.css';
 export default function ExperienceTimelineElement({ experiences }) {
   return (
     <VerticalTimeline>
-      {experiences.map((exp, index) => (
+      {experiences.map((exp: { data: { start: any; end: any; title: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal; company: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal; location: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal; responsibilities: any[]; }; }, index: any) => (
         <VerticalTimelineElement
           key={index}
           date={`${exp.data.start} - ${exp.data.end || "Present"}`}
@@ -31,7 +31,7 @@ export default function ExperienceTimelineElement({ experiences }) {
             <p className="text-sm text-slate-600 mb-2">{exp.data.location}</p>
             {exp.data.responsibilities && (
               <ul className="mt-4 space-y-2">
-                {exp.data.responsibilities.map((responsibility, index) => (
+                {exp.data.responsibilities.map((responsibility: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal, index: React.Key) => (
                   <li key={index} className="text-sm text-slate-700 flex items-start">
                     <span className="text-teal-600 mr-2">•</span>
                     {responsibility}

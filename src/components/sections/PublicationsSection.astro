@@ -68,30 +68,31 @@ const formatAuthors = (authors: string[]) => {
             {pub.data.links && (
               <div class="flex gap-3">
                 {pub.data.links.map((link) => (
-                  <a
-                    key={link.url}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center gap-1 px-3 py-1 text-sm rounded-md bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors duration-200"
-                  >
-                    <Icon
-                      name={
-                        link.text.toLowerCase() === "arxiv"
-                          ? "mdi:file-document"
-                          : link.text.toLowerCase() === "paper"
-                            ? "mdi:file-pdf-box"
-                            : link.text.toLowerCase() === "dataset"
-                              ? "mdi:database"
-                              : link.text.toLowerCase() === "code"
-                                ? "mdi:github"
-                                : "mdi:link"
-                      }
-                      class="w-4 h-4"
-                    />
-                    {link.text}
-                  </a>
-                ))}
+                    <div key={link.url}>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center gap-1 px-3 py-1 text-sm rounded-md bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                      >
+                        <Icon
+                          name={
+                            link.text.toLowerCase() === "arxiv"
+                              ? "mdi:file-document"
+                              : link.text.toLowerCase() === "paper"
+                                ? "mdi:file-pdf-box"
+                                : link.text.toLowerCase() === "dataset"
+                                  ? "mdi:database"
+                                  : link.text.toLowerCase() === "code"
+                                    ? "mdi:github"
+                                    : "mdi:link"
+                          }
+                          class="w-4 h-4"
+                        />
+                        {link.text}
+                      </a>
+                    </div>
+                  ))}
               </div>
             )}
           </motion.div>
@@ -142,7 +143,6 @@ const formatAuthors = (authors: string[]) => {
         {
           sortedPublications.map((pub) => (
             <div
-              key={pub.id}
               data-pub
               data-type={pub.data.type}
               class:list={[
@@ -176,7 +176,6 @@ const formatAuthors = (authors: string[]) => {
                 <div class="flex gap-3">
                   {pub.data.links.map((link) => (
                     <a
-                      key={link.url}
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"

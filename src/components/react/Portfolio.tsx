@@ -380,26 +380,11 @@ const Portfolio: React.FC<PortfolioProps> = ({
                     <h3 className="text-xl font-medium text-[#4A5D4F] mb-2">
                       {exp.data.title}
                     </h3>
-                    <p className="text-[#2C2C2C] mb-2">{exp.data.company}</p>
+                    <p className="text-[#2C2C2C] mb-2">{exp.data.organization}</p>
                     <p className="text-sm text-[#2C2C2C]/80">
                       {exp.data.start} - {exp.data.end || "Present"} •{" "}
                       {exp.data.location}
                     </p>
-                    {exp.data.responsibilities && (
-                      <ul className="mt-4 space-y-2">
-                        {exp.data.responsibilities.map(
-                          (responsibility, index) => (
-                            <li
-                              key={index}
-                              className="text-sm text-[#2C2C2C] flex items-start"
-                            >
-                              <span className="text-[#B87E5F] mr-2">•</span>
-                              {responsibility}
-                            </li>
-                          )
-                        )}
-                      </ul>
-                    )}
                   </div>
                 ))}
               </div>

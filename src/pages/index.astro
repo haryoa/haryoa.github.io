@@ -275,7 +275,6 @@ const sectionComponents = [
                 {
                   sections.map((section) => (
                     <li
-                      key={section}
                       data-section={section}
                       data-nav-link={section}
                       class="relative cursor-pointer whitespace-nowrap group text-[#4A5D4F] transition-colors duration-300 hover:text-[#B87E5F] section-nav-item"
@@ -295,7 +294,7 @@ const sectionComponents = [
                     id={id.replace(/\s+/g, '')} 
                     class="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border border-[#4A5D4F]/5 p-8 hover:shadow-md transition-all duration-300 section-transition stagger-children"
                   >
-                    <Component {...props} />
+                    <Component {...(props as any)} />
                   </div>
                 ))
               }

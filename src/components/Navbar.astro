@@ -1,8 +1,6 @@
 ---
 import { AnimatedLogo, AnimatedButton, BackButton } from "./NavbarMotion";
 
-import { motion } from "framer-motion";
-
 interface Props {
   showBackButton?: boolean;
 }
@@ -25,7 +23,7 @@ const { showBackButton = false } = Astro.props;
       </div>
 
       <div class="w-1/3 flex justify-end space-x-8">
-        <AnimatedButton client:load />
+        <AnimatedButton client:load>Button Text</AnimatedButton>
       </div>
     </div>
   </div>

@@ -28,13 +28,8 @@ function handleSectionIntersection(entries: IntersectionObserverEntry[]) {
     });
 
     document.querySelectorAll(".section-nav-item").forEach((item) => {
-      if (item.dataset.section === mostVisible.target.id) {
-        item.classList.add("active", "text-[#16A085]");
-        item.classList.remove("text-[#2C3E50]");
-      } else {
         item.classList.remove("active", "text-[#16A085]");
         item.classList.add("text-[#2C3E50]");
-      }
     });
   }
 }
@@ -99,7 +94,7 @@ function handleScroll(lastScroll: number, elements: any) {
 function handleResize() {
   const profileSidebar = document.querySelector("#profile-sidebar");
   if (window.innerWidth >= 1024) {
-    profileSidebar?.style.setProperty("maxHeight", "");
+    (profileSidebar as HTMLElement)?.style.setProperty("maxHeight", "");
     profileSidebar?.classList.remove("expanded");
   }
 }
@@ -155,7 +150,7 @@ export function initializePublicationFilter() {
     
     // Update publication visibility
     document.querySelectorAll("[data-pub]").forEach((pub) => {
-      if (window.pubFilter === "all" || pub.dataset.type === window.pubFilter) {
+      if (window.pubFilter === "all" || (pub as HTMLElement).dataset.type === window.pubFilter) {
         (pub as HTMLElement).style.display = "block";
       } else {
         (pub as HTMLElement).style.display = "none";
@@ -164,7 +159,7 @@ export function initializePublicationFilter() {
 
     // Update button states
     document.querySelectorAll("[data-filter-btn]").forEach((btn) => {
-      if (btn.dataset.filterBtn === filter) {
+      if ((btn as HTMLElement).dataset.filterBtn === filter) {
         btn.classList.remove("bg-white/50", "text-[#2C3E50]", "hover:bg-[#2C3E50]/10");
         btn.classList.add("bg-[#2C3E50]", "text-white");
       } else {
