@@ -98,7 +98,6 @@ const sectionComponents = [
   <head>
     <BaseHead />
     <script src="../scripts/main.ts"></script>
-
   </head>
   <body>
     <div class="min-h-screen bg-white">
@@ -290,12 +289,13 @@ const sectionComponents = [
             <div class="space-y-12 lg:space-y-24">
               {
                 sectionComponents.map(({ id, component: Component, props }) => (
-                  <div 
+                  <section 
                     id={id.replace(/\s+/g, '')} 
+                    data-section={id}
                     class="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border border-[#4A5D4F]/5 p-8 hover:shadow-md transition-all duration-300 section-transition stagger-children"
                   >
                     <Component {...(props as any)} />
-                  </div>
+                  </section>
                 ))
               }
             </div>

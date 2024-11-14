@@ -1,7 +1,7 @@
 // Observer configurations
 const observerOptions = {
   root: null,
-  rootMargin: "-20% 0px -70% 0px",
+  rootMargin: "-10% 0px -80% 0px", // Changed margins to better detect current section
   threshold: [0, 0.25, 0.5, 0.75, 1],
 };
 
@@ -20,18 +20,26 @@ declare global {
 
 // Helper functions
 function handleSectionIntersection(entries: IntersectionObserverEntry[]) {
-  const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+  entries.forEach((entry) => {
+    const navItem = document.querySelector(
+      `[data-nav-link="${entry.target.getAttribute('data-section')}"]`
+    );
+    
+    if (entry.isIntersecting) {
+      // Clear previous active states
+      document.querySelectorAll('.section-nav-item').forEach(item => {
+        item.classList.remove('active', 'text-[#B87E5F]');
+        item.classList.add('text-[#4A5D4F]');
+      });
+      
+      // Set new active state
+      navItem?.classList.add('active', 'text-[#B87E5F]');
+      navItem?.classList.remove('text-[#4A5D4F]');
 
-  if (visibleEntries.length > 0) {
-    const mostVisible = visibleEntries.reduce((prev, current) => {
-      return prev.intersectionRatio > current.intersectionRatio ? prev : current;
-    });
-
-    document.querySelectorAll(".section-nav-item").forEach((item) => {
-        item.classList.remove("active", "text-[#16A085]");
-        item.classList.add("text-[#2C3E50]");
-    });
-  }
+      // Add visible class to the section
+      entry.target.classList.add('visible');
+    }
+  });
 }
 
 function handleContentIntersection(entries: IntersectionObserverEntry[]) {
@@ -104,7 +112,8 @@ export function initializeObservers() {
   const sectionObserver = new IntersectionObserver(handleSectionIntersection, observerOptions);
   const contentObserver = new IntersectionObserver(handleContentIntersection, contentObserverOptions);
 
-  document.querySelectorAll("section[id]").forEach((section) => {
+  // Observe sections with data-section attribute
+  document.querySelectorAll('section[data-section]').forEach((section) => {
     sectionObserver.observe(section);
   });
 

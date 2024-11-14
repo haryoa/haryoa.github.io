@@ -162,6 +162,18 @@
     font-size: 1.25rem;
   }
 
+.section-nav-item.active::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 100%;
+height: 2px;
+background: linear-gradient(to right, #B87E5F, #B87E5FAA);
+transform: scaleX(1);
+opacity: 1;
+}
+
   #profile-sidebar .text-sm {
     font-size: 0.875rem;
   }
