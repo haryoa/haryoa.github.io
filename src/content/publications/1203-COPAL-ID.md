@@ -16,5 +16,4 @@ links:
     text: "Paper link"
   - url: "https://huggingface.co/datasets/haryoaw/COPAL"
     text: "Dataset"
-featured: true
 ---

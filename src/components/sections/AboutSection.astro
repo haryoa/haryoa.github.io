@@ -1,32 +1,25 @@
 ---
 import { getEntry } from "astro:content";
 
-interface Props {
-  profile: {
-    about: string;
-  };
-}
-
-const { profile } = Astro.props;
 const aboutEntry = await getEntry("about", "about");
 const { Content } = await aboutEntry.render();
 ---
 
-<section id="About Me" class="relative overflow-hidden">
+<div class="relative overflow-hidden">
   <div class="relative z-10 max-w-3xl mx-auto px-4">
     <h2
-      class="text-4xl font-light tracking-wide text-[#2C3E50] relative inline-block group mb-6"
+      class="text-4xl font-light tracking-wide text-[#4A5D4F] relative inline-block group mb-6"
     >
       About Me
       <div
-        class="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-[#16A085] to-[#B87E5F] group-hover:w-full transition-all duration-500 ease-in-out"
+        class="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-[#4A5D4F] to-[#B87E5F] group-hover:w-full transition-all duration-500 ease-in-out"
       >
       </div>
     </h2>
 
-    <div class="prose prose-slate prose-lg prose-a:text-[#3498db] prose-a:no-underline hover:prose-a:underline prose-a:transition-colors max-w-none relative">
+    <div class="prose prose-slate prose-lg prose-a:text-[#B87E5F] prose-a:no-underline hover:prose-a:underline prose-a:transition-colors max-w-none relative">
       <div
-        class="absolute top-0 -left-4 w-1 h-full bg-gradient-to-b from-[#16A085]/20 via-[#16A085]/10 to-transparent"
+        class="absolute top-0 -left-4 w-1 h-full bg-gradient-to-b from-[#B87E5F]/20 via-[#B87E5F]/10 to-transparent"
       >
       </div>
       <div class="animate-fadeIn text-base">
@@ -37,14 +30,14 @@ const { Content } = await aboutEntry.render();
 
   <!-- Decorative elements -->
   <div
-    class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#16A085]/5 to-transparent rounded-full blur-3xl"
+    class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#B87E5F]/5 to-transparent rounded-full blur-3xl"
   >
   </div>
   <div
     class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-[#B87E5F]/5 to-transparent rounded-full blur-2xl"
   >
   </div>
-</section>
+</div>
 
 <style>
   .animate-fadeIn {
@@ -75,13 +68,13 @@ const { Content } = await aboutEntry.render();
   }
 
   .prose a {
-    color: #3498db;
+    color: #B87E5F;
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
   .prose a:hover {
-    color: #2980b9;
+    color: #9C6649;
     text-decoration: underline;
   }
 </style>

@@ -3,21 +3,21 @@ import { ChevronRightIcon, MapPinIcon } from "@heroicons/react/24/solid";
 const { education } = Astro.props;
 ---
 
-<section id="Education" class="space-y-12">
+<div class="space-y-12">
   {/* Changed from space-y-6 */}
   <h2
-    class="text-3xl font-light tracking-wide text-[#2C3E50] relative inline-block group"
+    class="text-3xl font-light tracking-wide text-[#4A5D4F] relative inline-block group"
   >
     Education
     <div
-      class="absolute -bottom-2 left-0 w-0 h-px bg-[#16A085] group-hover:w-full transition-all duration-500"
+      class="absolute -bottom-2 left-0 w-0 h-px bg-[#B87E5F] group-hover:w-full transition-all duration-500"
     >
     </div>
   </h2>
   <div class="relative pt-8">
     {/* Added pt-8 for top padding */}
     {/* Timeline line */}
-    <div class="absolute left-0 top-8 h-full w-0.5 bg-[#16A085]/20"></div>
+    <div class="absolute left-0 top-8 h-full w-0.5 bg-[#B87E5F]/20"></div>
     {/* Adjusted top-8 to match parent */}
 
     <div class="space-y-12">
@@ -25,25 +25,25 @@ const { education } = Astro.props;
         education.map((edu: { data: { start: unknown; end: any; degree: unknown; field: unknown; institution: unknown; location: unknown; achievements: any[]; }; id: any; }) => (
           <div class="relative pl-8">
             {/* Timeline dot */}
-            <div class="absolute left-[-5px] top-0 w-3 h-3 rounded-full bg-[#16A085] ring-4 ring-[#16A085]/20" />
+            <div class="absolute left-[-5px] top-0 w-3 h-3 rounded-full bg-[#B87E5F] ring-4 ring-[#B87E5F]/20" />
 
             {/* Date label */}
-            <div class="absolute left-8 -top-6 text-sm font-medium text-[#16A085]">
+            <div class="absolute left-8 -top-6 text-sm font-medium text-[#B87E5F]">
               {edu.data.start} - {edu.data.end || "Present"}
             </div>
 
             <div
-              class="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-[#2C3E50]/10 
-                        transition-all duration-500 hover:shadow-md hover:border-[#16A085]/30 
+              class="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-[#4A5D4F]/10 
+                        transition-all duration-500 hover:shadow-md hover:border-[#B87E5F]/30 
                         hover:translate-x-2"
             >
-              <h3 class="text-xl font-medium text-[#2C3E50] mb-2">
+              <h3 class="text-xl font-medium text-[#4A5D4F] mb-2">
                 {edu.data.degree} in {edu.data.field}
               </h3>
               <p class="text-[#2C2C2C] mb-4 flex items-center">
                 {edu.data.institution}
                 <span class="inline-flex items-center ml-2">
-                  <MapPinIcon className="w-4 h-4 text-[#16A085] mx-1" />
+                  <MapPinIcon className="w-4 h-4 text-[#B87E5F] mx-1" />
                   {edu.data.location}
                 </span>
               </p>
@@ -51,9 +51,9 @@ const { education } = Astro.props;
 
               {edu.data.achievements && (
                 <ul class="mt-4 space-y-2">
-                  {edu.data.achievements.map((achievement: unknown, index: any) => (
+                  {edu.data.achievements.map((achievement: unknown) => (
                     <li class="text-sm text-[#2C2C2C] flex items-start">
-                      <ChevronRightIcon className="w-4 h-4 text-[#16A085] mr-2 flex-shrink-0" />
+                      <ChevronRightIcon className="w-4 h-4 text-[#B87E5F] mr-2 flex-shrink-0" />
                       {achievement}
                     </li>
                   ))}
@@ -65,7 +65,7 @@ const { education } = Astro.props;
       }
     </div>
   </div>
-</section>
+</div>
 
 <style>
   .relative:hover .absolute.w-3.h-3 {

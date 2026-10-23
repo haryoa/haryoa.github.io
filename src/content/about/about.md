@@ -2,7 +2,7 @@
 title: About Me
 ---
 
-I am a PhD student in Natural Language Processing (NLP) at Mohamed bin Zayed University of Artificial Intelligence (MBZUAI), supervised by Dr. [Alham Fikri Aji](https://afaji.github.io/) and Prof. [Thamar Solorio](https://mbzuai.ac.ae/study/faculty/thamar-solorio/). 
+I am a PhD student in Natural Language Processing (NLP) at Mohamed bin Zayed University of Artificial Intelligence (MBZUAI), supervised by Dr. [Alham Fikri Aji](https://afaji.github.io/).
 
 Before my PhD, I had an opportunity to work in industry and do some projects as a Software Engineer, gaining skill in full-stack development and DevOps. Consequently, I can bridge the gap between theoretical advances and practical implementations.
 

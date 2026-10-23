@@ -1,0 +1,37 @@
+---
+// Shown by GitHub Pages for any URL that does not exist.
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BaseHead from "../components/BaseHead.astro";
+import { FiArrowRight } from "react-icons/fi";
+import "../styles/main.css";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="Page not found | Haryo Akbarianto Wibowo" />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col bg-gradient-to-b from-white via-[#F5F1E8]/40 to-white">
+      <nav class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-sm z-40 border-b border-[#4A5D4F]/5">
+        <Navbar />
+      </nav>
+
+      <main class="flex-1 grid place-items-center pt-28 pb-20 px-6">
+        <div class="text-center max-w-md">
+          <p class="text-6xl font-light text-[#4A5D4F]">404</p>
+          <div class="mt-4 mx-auto w-12 h-px bg-[#B87E5F]/50"></div>
+          <p class="mt-4 text-[#2C2C2C]/80">Looks like this path got lost in the forest. The page may have moved, or never existed.</p>
+          <div class="mt-6 flex justify-center gap-6 text-sm">
+            <a href="/" class="inline-flex items-center gap-1 text-[#B87E5F] hover:gap-2 transition-all">Home <FiArrowRight /></a>
+            <a href="/cv/" class="inline-flex items-center gap-1 text-[#4A5D4F] hover:text-[#B87E5F]">CV</a>
+            <a href="/blogs/" class="inline-flex items-center gap-1 text-[#4A5D4F] hover:text-[#B87E5F]">Blog</a>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

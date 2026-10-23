@@ -1,3 +1,5 @@
+import typography from '@tailwindcss/typography';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -9,16 +11,16 @@ export default {
         copper: "#B87E5F",
         charcoal: "#2C2C2C",
       },
-      typography: (theme) => ({
+      typography: () => ({
         slate: {
           css: {
-            '--tw-prose-links': '#3498db',
+            '--tw-prose-links': '#B87E5F',
             'a': {
-              color: '#3498db',
+              color: '#B87E5F',
               'text-decoration': 'none',
               'transition': 'color 0.2s ease',
               '&:hover': {
-                color: '#2980b9',
+                color: '#9C6649',
                 'text-decoration': 'underline',
               },
             },
@@ -28,6 +30,6 @@ export default {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
   ],
 };

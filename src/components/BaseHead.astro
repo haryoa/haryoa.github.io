@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = "Haryo Akbarianto Wibowo | NLP Research PhD Student at MBZUAI",
-  description = "Haryo Akbarianto Wibowo is a PhD student at MBZUAI researching learning efficiency, explainability, and data (selection or building) in Natural Language Processing. Currently seeking internship opportunities in ML/NLP research.",
+  description = "Haryo Akbarianto Wibowo is a PhD student at MBZUAI researching learning efficiency, explainability, and data (selection or building) in Natural Language Processing.",
   image = "/images/social-card.png",
   canonicalURL = new URL(
     Astro.url.pathname,
@@ -23,13 +23,15 @@ const {
 <meta charset="utf-8" />
 <meta name="google-site-verification" content="ULGZb1-J3LXCIOJm1AbRhQk_8_08kd4OV5wg3anptrw" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/png" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+<link rel="sitemap" href="/sitemap.xml" />
 
 <!-- Other important meta tags -->
 <meta name="author" content="Haryo Akbarianto Wibowo" />
@@ -47,7 +49,7 @@ const {
 <meta
   name="academic_field"
   content="Learning Efficiency, PhD Students, 
-  Explainabiltiy, Interpretability, Data, Text Style Transfer, MBZUAI, Indonesia, UAE, Data, Efficiency"
+  Explainability, Interpretability, Data, Text Style Transfer, MBZUAI, Indonesia, UAE, Data, Efficiency"
 />
 
 

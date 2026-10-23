@@ -21,11 +21,11 @@ authors:
     "Alice Oh",
     "Chong-Wah Ngo",
   ]
-venue: "Arxiv"
-year: 2024
-type: "preprint" # Ensure this matches one of the allowed types: journal, conference, preprint, workshop
+venue: "NAACL"
+year: 2025
+type: "conference" # Ensure this matches one of the allowed types: journal, conference, preprint, workshop
 links:
-  - url: "https://arxiv.org/abs/2410.12705"
+  - url: "https://aclanthology.org/2025.naacl-long.167/"
     text: "Paper Link"
   - url: "https://huggingface.co/worldcuisines"
     text: "Dataset"

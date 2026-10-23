@@ -1,15 +1,8 @@
 import { motion } from "framer-motion";
+import type { CollectionEntry } from "astro:content";
 
 interface TalkProps {
-  talk: {
-    data: {
-      title: string;
-      event: string;
-      date: string;
-      location: string;
-      links: Array<{ text: string; url: string }>;  // Updated type
-    };
-  };
+  talk: CollectionEntry<"talks">;
   index: number;
 }
 
@@ -20,10 +13,10 @@ export default function TalkCard({ talk, index }: TalkProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="group relative bg-gradient-to-br from-white to-teal-50/30 rounded-lg p-6 hover:shadow-xl transition-all duration-300"
+      className="group relative bg-gradient-to-br from-white to-[#F5F1E8]/40 rounded-lg p-6 hover:shadow-xl transition-all duration-300"
     >
-      <div className="absolute inset-0 bg-teal-500/5 rounded-lg transform transition-transform group-hover:scale-105 -z-10" />
-      <h3 className="text-xl font-medium text-[#2C3E50] mb-2">
+      <div className="absolute inset-0 bg-[#4A5D4F]/5 rounded-lg transform transition-transform group-hover:scale-105 -z-10" />
+      <h3 className="text-xl font-medium text-[#4A5D4F] mb-2">
         {talk.data.title}
       </h3>
       <p className="text-sm text-[#2C2C2C] mb-2">{talk.data.event}</p>

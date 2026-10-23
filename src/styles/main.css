@@ -1,6 +1,6 @@
 
 .keyboard-nav :focus {
-  outline: 2px solid #16a085 !important;
+  outline: 2px solid #B87E5F !important;
   outline-offset: 4px !important;
 }
 
@@ -53,13 +53,13 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: #16a085;
+  background: #B87E5F;
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
 
 .section-nav-item.active {
-  color: #16a085;
+  color: #B87E5F;
 }
 
 .section-nav-item.active::after {

@@ -1,16 +1,17 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import TalkCard from '../TalkCard';
 
-const { talks } = Astro.props;
+const { talks } = Astro.props as { talks: CollectionEntry<"talks">[] };
 ---
 
-<section id="Talks" class="space-y-6">
+<div class="space-y-6">
   <h2
-    class="text-3xl font-light tracking-wide text-[#2C3E50] relative inline-block group"
+    class="text-3xl font-light tracking-wide text-[#4A5D4F] relative inline-block group"
   >
     Talks
     <div
-      class="absolute -bottom-2 left-0 w-0 h-px bg-[#16A085] group-hover:w-full transition-all duration-500"
+      class="absolute -bottom-2 left-0 w-0 h-px bg-[#B87E5F] group-hover:w-full transition-all duration-500"
     >
     </div>
   </h2>
@@ -21,4 +22,4 @@ const { talks } = Astro.props;
       ))
     }
   </div>
-</section>
+</div>

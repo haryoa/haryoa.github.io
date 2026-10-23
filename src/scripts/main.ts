@@ -58,9 +58,18 @@ function handleContentIntersection(entries: IntersectionObserverEntry[]) {
   });
 }
 
-function handleScroll(lastScroll: number, elements: any) {
+type ScrollElements = {
+  navbar: HTMLElement | null;
+  backToTop: HTMLElement | null;
+  profileSidebar: HTMLElement | null;
+  sectionNav: HTMLElement | null;
+  progressBar: HTMLElement | null;
+};
+
+function handleScroll(lastScroll: number, elements: ScrollElements) {
   const currentScroll = window.scrollY;
   const scrollingDown = currentScroll > lastScroll;
+  const sidebarIsFixed = window.innerWidth >= 1024;
 
   // Navbar and sidebar behavior
   if (currentScroll <= 0) {
@@ -71,7 +80,7 @@ function handleScroll(lastScroll: number, elements: any) {
   } else if (scrollingDown) {
     elements.navbar?.classList.remove("translate-y-0");
     elements.navbar?.classList.add("-translate-y-full");
-    if (elements.profileSidebar) elements.profileSidebar.style.transform = "translateY(-4rem)";
+    if (elements.profileSidebar) elements.profileSidebar.style.transform = sidebarIsFixed ? "translateY(-4rem)" : "";
     if (elements.sectionNav) elements.sectionNav.style.top = "0";
   } else {
     elements.navbar?.classList.remove("-translate-y-full");
@@ -92,7 +101,7 @@ function handleScroll(lastScroll: number, elements: any) {
   // Progress bar
   if (elements.progressBar) {
     const height = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = (currentScroll / height) * 100;
+    const scrolled = height > 0 ? Math.min(100, (currentScroll / height) * 100) : 0;
     elements.progressBar.style.width = `${scrolled}%`;
   }
 
@@ -100,11 +109,8 @@ function handleScroll(lastScroll: number, elements: any) {
 }
 
 function handleResize() {
-  const profileSidebar = document.querySelector("#profile-sidebar");
-  if (window.innerWidth >= 1024) {
-    (profileSidebar as HTMLElement)?.style.setProperty("maxHeight", "");
-    profileSidebar?.classList.remove("expanded");
-  }
+  const profileSidebar = document.querySelector<HTMLElement>("#profile-sidebar");
+  if (profileSidebar && window.innerWidth < 1024) profileSidebar.style.transform = "";
 }
 
 // Main initialization functions
@@ -120,16 +126,11 @@ export function initializeObservers() {
   document.querySelectorAll(".section-transition").forEach((section) => {
     contentObserver.observe(section);
   });
-
-  document.querySelectorAll(".space-y-24 > div").forEach((section) => {
-    section.classList.add("stagger-children");
-    contentObserver.observe(section);
-  });
 }
 
 export function initializeScrollHandlers() {
   let lastScroll = 0;
-  const elements = {
+  const elements: ScrollElements = {
     navbar: document.querySelector("#main-navbar"),
     backToTop: document.querySelector("#back-to-top"),
     profileSidebar: document.querySelector("#profile-sidebar"),
@@ -139,7 +140,7 @@ export function initializeScrollHandlers() {
 
   window.addEventListener("scroll", () => {
     lastScroll = handleScroll(lastScroll, elements);
-  });
+  }, { passive: true });
   window.addEventListener("resize", handleResize);
 
   // Back to top click handler
@@ -169,11 +170,11 @@ export function initializePublicationFilter() {
     // Update button states
     document.querySelectorAll("[data-filter-btn]").forEach((btn) => {
       if ((btn as HTMLElement).dataset.filterBtn === filter) {
-        btn.classList.remove("bg-white/50", "text-[#2C3E50]", "hover:bg-[#2C3E50]/10");
-        btn.classList.add("bg-[#2C3E50]", "text-white");
+        btn.classList.remove("bg-white/50", "text-[#4A5D4F]", "hover:bg-[#4A5D4F]/10");
+        btn.classList.add("bg-[#4A5D4F]", "text-white");
       } else {
-        btn.classList.remove("bg-[#2C3E50]", "text-white");
-        btn.classList.add("bg-white/50", "text-[#2C3E50]", "hover:bg-[#2C3E50]/10");
+        btn.classList.remove("bg-[#4A5D4F]", "text-white");
+        btn.classList.add("bg-white/50", "text-[#4A5D4F]", "hover:bg-[#4A5D4F]/10");
       }
     });
   };
@@ -187,7 +188,7 @@ function initializeSectionNavigation() {
       if (section) {
         const headerOffset = 100; // Adjust this value based on your header height + some padding
         const elementPosition = section.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
         
         window.scrollTo({
           top: offsetPosition,

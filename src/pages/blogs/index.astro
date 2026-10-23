@@ -1,13 +1,60 @@
 ---
-// src/pages/blog/index.astro
-import Layout from "../../layouts/Layout.astro";
+// /blogs/: the list of blog posts (newest first). Posts are listed in src/data/blogs.ts.
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import BaseHead from "../../components/BaseHead.astro";
+import { FiArrowRight, FiDownload } from "react-icons/fi";
+import { blogs, formatDate } from "../../data/blogs";
+import "../../styles/main.css";
 ---
 
-<Layout>
-  <div class="min-h-screen flex items-center justify-center bg-cream">
-    <div class="text-center">
-      <h1 class="text-4xl font-light text-sage mb-4">Blog</h1>
-      <p class="text-charcoal">Coming Soon</p>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <BaseHead title="Blog | Haryo Akbarianto Wibowo"
+      description="Deep learning deep dives, technical write-ups on applications, and personal posts." />
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col bg-gradient-to-b from-white via-[#F5F1E8]/40 to-white">
+      <nav class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-sm z-40 border-b border-[#4A5D4F]/5">
+        <Navbar />
+      </nav>
+
+      <main class="flex-1 pt-28 pb-20 px-6">
+        <div class="max-w-3xl mx-auto">
+          <h1 class="text-3xl sm:text-4xl font-light tracking-wide text-[#4A5D4F]">Blog</h1>
+          <div class="mt-3 w-12 h-px bg-[#B87E5F]/50"></div>
+          <p class="mt-4 text-[#2C2C2C]/80">
+            A mix of things: deep dives into deep learning, technical write-ups on applications and things I build,
+            and sometimes just personal posts. Expect toy problems, gentle math, random unfunny jokes,
+            and things you can click on.
+          </p>
+
+          <ul class="mt-10 space-y-5">
+            {blogs.map((post) => (
+              <li class="rounded-2xl border border-[#4A5D4F]/10 bg-white/90 p-6 shadow-sm hover:shadow-md transition-all duration-300">
+                <p class="text-xs text-[#4A5D4F]/60">{formatDate(post.date)}</p>
+                <a href={`/blogs/${post.slug}/`} class="group">
+                  <h2 class="mt-1 text-xl font-medium text-[#4A5D4F] group-hover:text-[#B87E5F] transition-colors">{post.title}</h2>
+                </a>
+                <p class="mt-2 text-sm text-[#2C2C2C]/80 leading-relaxed">{post.summary}</p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  {post.tags.map((t) => (
+                    <span class="px-2.5 py-0.5 text-xs rounded-full bg-[#F5F1E8] text-[#4A5D4F]">{t}</span>
+                  ))}
+                </div>
+                <div class="mt-4 flex flex-wrap items-center gap-5 text-sm">
+                  <a href={`/blogs/${post.slug}/`} class="inline-flex items-center gap-1 text-[#B87E5F] hover:gap-2 transition-all">Read <FiArrowRight /></a>
+                  {post.pdf && (
+                    <a href={`/blogs/${post.slug}/main.pdf`} class="inline-flex items-center gap-1 text-[#4A5D4F]/70 hover:text-[#4A5D4F]"><FiDownload /> PDF</a>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </main>
+
+      <Footer />
     </div>
-  </div>
-</Layout>
+  </body>
+</html>

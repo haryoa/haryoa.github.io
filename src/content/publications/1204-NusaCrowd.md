@@ -21,8 +21,8 @@ authors:
     "Sakriani Sakti",
     "Ayu Purwarianti"
   ]
-venue: "NAACL"
-year: 2024
+venue: "Findings of ACL"
+year: 2023
 type: "conference" # Ensure this matches one of the allowed types: journal, conference, preprint, workshop
 links:
   - url: "https://aclanthology.org/2023.findings-acl.868/"
